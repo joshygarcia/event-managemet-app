@@ -15,7 +15,12 @@ Catering and Production Services: The app includes entities for Catering and Pro
 
 The ER diagram for the app includes entities for Users, Employees, Clients, Events, Venues, Catering providers, and Production providers. The relationships between these entities are managed through foreign key relationships.
 
+<details>
+<summary>Click here to see ER Diagram</summary>
+
 ![Event Management ER Diagram](./image.png)
+
+</details>
 
 ## Technologies Used
 
