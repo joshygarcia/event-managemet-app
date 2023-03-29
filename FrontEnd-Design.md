@@ -44,7 +44,8 @@ We use **[Material Icons](https://material.io/resources/icons/)** for all the ic
 ### Landing Page
 
 The landing page introduces the app to new users and provides a brief overview of its features. It also contains a call-to-action button to sign up or sign in.
-Sign Up / Sign In
+
+## Sign Up / Sign In
 
 The sign-up and sign-in pages allow users to create a new account or access their existing one. The design includes fields for email, password, and a "Remember Me" checkbox.
 
