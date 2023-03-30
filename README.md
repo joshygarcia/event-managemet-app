@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Event Management App
 
 This event management app is designed to help users create and manage events, select venues, and coordinate catering and production services. The app includes features for user management, event creation, venue selection, and service provider selection.
