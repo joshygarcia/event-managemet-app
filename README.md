@@ -18,7 +18,7 @@ The ER diagram for the app includes entities for Users, Employees, Clients, Even
 <details>
 <summary>Click here to see ER Diagram</summary>
 
-![Event Management ER Diagram](./image.png)
+![Event Management ER Diagram](./documentation/ERD.png)
 
 </details>
 
