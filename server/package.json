@@ -3,9 +3,11 @@
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "fs": "^0.0.1-security",
     "mysql2": "^3.2.0",
     "node": "^19.8.1",
     "nodemon": "^2.0.22",
+    "path": "^0.12.7",
     "sequelize": "^6.30.0",
     "sequelize-cli": "^6.6.0",
     "validator": "^13.9.0"
