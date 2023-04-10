@@ -4,18 +4,18 @@ This repository contains the Figma design files for the front end of the Event M
 
 ## Table of Contents
 
-- **[Design File](#Design-File)**
-- **[Design Overview](#Design-Overview)**
-    - **[Color Scheme](#Color-Scheme)**
-    - **[Typography](#Typography)**
-    - **[Iconography](#Iconography)**
-- **[Pages & Components](#Pages&Components)**
-    - **[Landing Page](#LandingPage)**
-    - **[Sign Up / Sign In](#SignUp/SignIn)**
-    - **[Dashboard](#Dashboard)**
-    - **[Create Event](#CreateEvent)**
-    - **[Event Details](#EventDetails)**
-    - **[User Profile](#UserProfile)**
+- **[Design File](#design-file)**
+- **[Design Overview](#design-overview)**
+  - **[Color Scheme](#color-scheme)**
+  - **[Typography](#typography)**
+  - **[Icons](#icons)**
+- **[Pages & Components](#pages--components)**
+  - **[Landing Page](landingPage)**
+  - **[Sign Up / Sign In](#sign-up--sign-in)**
+  - **[Dashboard](#dashboard)**
+  - **[Create Event](#create-event)**
+  - **[Event Details](#event-details)**
+  - **[User Profile](#user-profile)**
 
 ## Design File
 
@@ -24,6 +24,7 @@ To get started with the Figma design file, you will need a Figma account. If you
 **[Figma File](https://www.figma.com/file/7AgnbnirRLTBblcF5zGi0b/Level-Up-Events?node-id=0%3A1&t=S92f8i3LGud1CiMn-1)**
 
 ## Design Overview
+
 ### Color Scheme
 
 The color scheme consists of a primary, secondary, and tertiary color, along with shades of gray for various UI elements. The colors used are:
@@ -35,7 +36,8 @@ The color scheme consists of a primary, secondary, and tertiary color, along wit
 ### Typography
 
 The primary font used in the design is **[Roboto](https://fonts.google.com/specimen/Roboto)** , which is a versatile sans-serif font that complements various UI elements.
-Iconography
+
+### Icons
 
 We use **[Material Icons](https://material.io/resources/icons/)** for all the icons in the design. They provide a consistent and clean look throughout the app.
 
