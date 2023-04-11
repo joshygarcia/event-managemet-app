@@ -1,5 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
-    const Users = sequelize.define('Users', {
+    const User = sequelize.define('User', {
+        userId: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
         username: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -22,19 +27,19 @@ module.exports = (sequelize, DataTypes) => {
         password: {
             type: DataTypes.STRING,
             allowNull: false,
-            notEmpty: true,
-            validate: {
-                len: [8, 20]
-            }
+            notEmpty: true
         },
         role: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            notEmpty: true,
+            validate: {
+                isIn: [['company', 'manager', 'admin']]
+            },
+            defaultValue: 'company'
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: false,
-            notEmpty: true,
             validate: {
                 len: [2, 34],
                 isAlpha: true
@@ -42,64 +47,73 @@ module.exports = (sequelize, DataTypes) => {
         },
         phone: {
             type: DataTypes.STRING,
-            allowNull: false,
-            notEmpty: true,
             validate: {
                 len: [10, 10],
                 isNumeric: true
-            }
+            },
+            allowNull: true
         },
         address: {
             type: DataTypes.STRING,
-            allowNull: false,
-            notEmpty: true,
             validate: {
                 len: [3, 34]
-            }
+            },
+            allowNull: true
         },
         city: {
             type: DataTypes.STRING,
-            allowNull: false,
-            notEmpty: true,
             validate: {
                 len: [3, 34],
                 isAlpha: true
-            }
+            },
+            allowNull: true
         },
         state: {
             type: DataTypes.STRING,
-            allowNull: false,
-            notEmpty: true,
             validate: {
                 len: [2, 2],
                 isAlpha: true
-            }
+            },
+            allowNull: true
         },
         zip: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            notEmpty: true,
             validate: {
                 len: [5, 5],
                 isNumeric: true
-            }
+            },
+            allowNull: true
         }
     });
 
-    Users.associate = function(models) {
-        Users.hasOne(models.Manager, {
+    User.associate = function(models) {
+        User.hasOne(models.Manager, {
             foreignKey: {
-                allowNull: false,
-                unique: true
-            }
-        });
-        Users.hasOne(models.Company, {
+                name: "userId", 
+                allowNull: false
+            },
+            references: {
+                model: 'User',
+                key: 'userId'
+            },
+            onDelete: "cascade",
+            hooks: true,
+            unique: true
+        });  
+        User.hasOne(models.Company, {
             foreignKey: {
-                allowNull: false,
-                unique: true
-            }
-        });
+                name: "userId", 
+                allowNull: false
+            },
+            references: {
+                model: 'User',
+                key: 'userId'
+            },
+            onDelete: "cascade",
+            hooks: true,
+            unique: true
+        }); 
     };
 
-    return Users;
+    return User;
 };

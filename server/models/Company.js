@@ -1,7 +1,15 @@
-const Users = require("./Users");
+const User = require("./User");
 
 module.exports = function(sequelize, DataTypes) {
     const Company = sequelize.define('Company', {
+        userId: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            references: {
+                model: 'Users',
+                key: 'userId'
+            }
+        },
         paymentInfo: {
             type: DataTypes.STRING,
             allowNull: false
@@ -15,20 +23,26 @@ module.exports = function(sequelize, DataTypes) {
     Company.associate = function(models) {
         Company.hasMany(models.Events, {
             foreignKey: {
-                allowNull: false
+                name: "companyId"
+            },
+            references: {
+                model: 'Company',
+                key: 'userId'
             }
         });
-        Company.belongsTo(models.Users, {
+        Company.belongsTo(models.User, {
             foreignKey: {
-                allowNull: false,
-                unique: true
-                }
-        });
-        Company.hasMany(models.Events, {
-            foreignKey: {
+                name: "userId",
                 allowNull: false
-            }
-        }); 
+            },
+            references: {
+                model: 'Users',
+                key: 'userId'
+            },
+            onDelete: "cascade",
+            hooks: true,
+            unique: true
+        });
     };
     
     return Company;

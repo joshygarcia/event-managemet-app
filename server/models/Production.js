@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     const Production = sequelize.define('Production', {
-        id: {
+        productionId: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
@@ -12,40 +12,54 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         description: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: "No description"
         },
         audio: {
             type: DataTypes.BOOLEAN,
-            allowNull: false
+            allowNull: false,
+            defaultValue: false
         },
         lighting: {
             type: DataTypes.BOOLEAN,
-            allowNull: false
+            allowNull: false,
+            defaultValue: false
         },
         video: {
             type: DataTypes.BOOLEAN,
-            allowNull: false
+            allowNull: false,
+            defaultValue: false
         },
         electrical: {
             type: DataTypes.BOOLEAN,
-            allowNull: false
+            allowNull: false,
+            defaultValue: false
         },
         availability: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            defaultValue: "Available"
         },
         pricePerDay: {
             type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        type: {
-            type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            defaultValue: 0,
+            validate: {
+                isNumeric: true
+            }
         }
-
     });
 
     Production.associate = function(models) {
+        Production.belongsToMany(models.Events, {
+            through: "EventProduction",
+            foreignKey: "productionId",
+            references: {
+                model: "Production",
+                key: "productionId"
+            }
+        });
     };
 
     return Production;

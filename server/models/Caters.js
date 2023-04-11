@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-    const Caters = sequelize.define('Caters', {
-        id: {
+    const Cater = sequelize.define('Cater', {
+        caterId: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
@@ -13,69 +13,82 @@ module.exports = function(sequelize, DataTypes) {
         },
         address: {
             type: DataTypes.STRING,
-            allowNull: false
+            defaultValue: null,
+            allowNull: true
         },
         city: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true,
+            defaultValue: null
         },
         state: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true,
+            defaultValue: null
         },
         zip: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true,
+            defaultValue: null
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true,
+            defaultValue: null
         },
         phone: {
             type: DataTypes.STRING,
-            allowNull: false
-        },
-        capacity: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        pricePerDay: {
-            type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true,
+            defaultValue: null
         },
         availability: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true,
+            defaultValue: null
         },
         description: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true,
+            defaultValue: null
         },
         type: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true,
+            defaultValue: null
         },
         menu: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true,
+            defaultValue: null
         },
         pricePerPerson: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true,
+            defaultValue: null
         },
         diets: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true,
+            defaultValue: null
         },
         alcohol: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            defaultValue: null
         },
     }, { timestamps: false } );
 
-    Caters.associate = function(models) {
+    Cater.associate = function(models) {
+        Cater.belongsToMany(models.Events, {
+            through: "EventCatering",
+            foreignKey: "caterId",
+            references: {
+                model: "Cater",
+                key: "id"
+            }
+        });
 
     };
 
-    return Caters;
+    return Cater;
 }

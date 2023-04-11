@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-    const Venues = sequelize.define('Venues', {
-        id: {
+    const Venue = sequelize.define('Venue', {
+        venueId: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
@@ -13,53 +13,64 @@ module.exports = function(sequelize, DataTypes) {
         },
         address: {
             type: DataTypes.STRING,
-            allowNull: false
+            defaultValue: null,
+            allowNull: true
         },
         city: {
             type: DataTypes.STRING,
-            allowNull: false
+            defaultValue: null,
+            allowNull: true
         },
         state: {
             type: DataTypes.STRING,
-            allowNull: false
+            defaultValue: null,
+            allowNull: true
         },
         zip: {
             type: DataTypes.STRING,
-            allowNull: false
+            defaultValue: null,
+            allowNull: true
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false
+            defaultValue: null,
+            allowNull: true
         },
         phone: {
             type: DataTypes.STRING,
-            allowNull: false
+            defaultValue: null,
+            allowNull: true
         },
         capacity: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            defaultValue: null,
+            allowNull: true
         },
         pricePerDay: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            defaultValue: null,
+            allowNull: true
         },
         availability: {
             type: DataTypes.STRING,
-            allowNull: false
+            defaultValue: null,
+            allowNull: true
         },
         description: {
             type: DataTypes.STRING,
-            allowNull: false
+            defaultValue: null,
+            allowNull: true
         },
         type: {
             type: DataTypes.STRING,
-            allowNull: false
+            defaultValue: null,
+            allowNull: true
         }
     }, { timestamps: false } );
 
-    Venues.associate = function(models) {
+    Venue.associate = function(models) {
 
     };
 
-    return Venues;
+    return Venue;
 }
