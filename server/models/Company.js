@@ -11,12 +11,10 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
         paymentInfo: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING
         },
         industry: {
             type: DataTypes.STRING,
-            allowNull: false
         }
     }, { timestamps: false } );
 
