@@ -19,34 +19,21 @@ module.exports = (sequelize, DataTypes) => {
         },
         time: {
             type: DataTypes.TIME
+        },
+        venueId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        companyId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        managerId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
     });
 
-    Events.associate = function(models) {
-        Events.belongsTo(models.Venue, {
-            foreignKey: "venueId",
-            references: {
-                model: "Venue",
-                key: "venueId"
-            }
-        });
-        Events.belongsToMany(models.Production, {
-            through: "EventProduction",
-            foreignKey: "eventId",
-            references: {
-                model: "Events",
-                key: "eventId"
-            }
-        });
-        Events.belongsToMany(models.Cater, {
-            through: "EventCatering",
-            foreignKey: "eventId",
-            references: {
-                model: "Events",
-                key: "eventId"
-            }
-        });
-    };
-
     return Events;
-}
+    
+};

@@ -66,14 +66,18 @@ router.post('/register/manager', validateTokenAdmin, async (req, res) => {
 // admin
 router.post('/register/admin', validateTokenAdmin, async (req, res) => {
     try {
-        const { username, email, password, name, phone} = req.body;
+        const { username, email, password, name, phone, address, city, state, zip} = req.body;
         const newUser = await User.create({
         username,
         email,
         password: bcrypt.hashSync(password, 8),
         role: 'admin',
         name,
-        phone
+        phone,
+        address,
+        city,
+        state,
+        zip
         });
         res.status(201).json(newUser);
     } catch (error) {

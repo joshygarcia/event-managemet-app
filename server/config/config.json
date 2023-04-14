@@ -1,17 +1,22 @@
 {
-  "development": {
+  "local_development": {
     "username": "root",
     "password": "pitola809",
-    "database": "LevelUp",
+    "database": "levelup",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+  "online_development": {
+    "username": "yk7akox9kugl9twd3ow7",
+    "password": "pscale_pw_hU78Pl3V0Yf1WXkzEOhdwOeloS9eWmlrzrG6Z6o4B39",
+    "database": "levelup",
+    "host": "aws.connect.psdb.cloud",
+    "dialect": "mysql",
+    "dialectOptions": {
+      "ssl": {
+        "rejectUnauthorized": true
+      }
+    }
   },
   "production": {
     "username": "root",

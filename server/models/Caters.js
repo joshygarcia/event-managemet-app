@@ -78,17 +78,5 @@ module.exports = function(sequelize, DataTypes) {
         },
     }, { timestamps: false } );
 
-    Cater.associate = function(models) {
-        Cater.belongsToMany(models.Events, {
-            through: "EventCatering",
-            foreignKey: "caterId",
-            references: {
-                model: "Cater",
-                key: "id"
-            }
-        });
-
-    };
-
     return Cater;
 }

@@ -1,5 +1,8 @@
 require('dotenv').config();
 
+
+
+
 const express = require('express');
 const app = express();
 
@@ -27,7 +30,6 @@ app.use('/api/cater', caterRouter);
 
 const productionRouter = require('./routes/Production');
 app.use('/api/production', productionRouter);
-
 
 db.sequelize.sync().then(() => {
   app.listen(process.env.PORT, () => {

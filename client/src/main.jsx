@@ -2,8 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 
-import Landing from './pages/Landing.jsx'
-import Login from './pages/Login.jsx'
+import Landing from './pages/Landing'
+import Login from './pages/Login'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
