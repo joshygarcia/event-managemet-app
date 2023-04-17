@@ -7,8 +7,8 @@
     "dialect": "mysql"
   },
   "online_development": {
-    "username": "yk7akox9kugl9twd3ow7",
-    "password": "pscale_pw_hU78Pl3V0Yf1WXkzEOhdwOeloS9eWmlrzrG6Z6o4B39",
+  "username":"process.env.online_development_username",
+    "password": "online_development_password",
     "database": "levelup",
     "host": "aws.connect.psdb.cloud",
     "dialect": "mysql",
