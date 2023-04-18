@@ -35,8 +35,9 @@ function Login() {
         localStorage.setItem('accessToken', token); // Store the token in local storage
         // TODO: Redirect to the protected page
       } else {
-        const { message } = await response.json();
-        throw new Error(message);
+        const { error } = await response.json();
+        setError(error)
+        throw new Error(error);
       }
     } catch (err) {
       setError(err.message);
