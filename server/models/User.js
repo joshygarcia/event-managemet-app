@@ -86,34 +86,5 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    User.associate = function(models) {
-        User.hasOne(models.Manager, {
-            foreignKey: {
-                name: "userId", 
-                allowNull: false
-            },
-            references: {
-                model: 'User',
-                key: 'userId'
-            },
-            onDelete: "cascade",
-            hooks: true,
-            unique: true
-        });  
-        User.hasOne(models.Company, {
-            foreignKey: {
-                name: "userId", 
-                allowNull: false
-            },
-            references: {
-                model: 'User',
-                key: 'userId'
-            },
-            onDelete: "cascade",
-            hooks: true,
-            unique: true
-        }); 
-    };
-
     return User;
 };

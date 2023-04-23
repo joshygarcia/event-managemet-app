@@ -66,14 +66,18 @@ router.post('/register/manager', validateTokenAdmin, async (req, res) => {
 // admin
 router.post('/register/admin', validateTokenAdmin, async (req, res) => {
     try {
-        const { username, email, password, name, phone} = req.body;
+        const { username, email, password, name, phone, address, city, state, zip} = req.body;
         const newUser = await User.create({
         username,
         email,
         password: bcrypt.hashSync(password, 8),
         role: 'admin',
         name,
-        phone
+        phone,
+        address,
+        city,
+        state,
+        zip
         });
         res.status(201).json(newUser);
     } catch (error) {
@@ -85,9 +89,12 @@ router.post('/register/admin', validateTokenAdmin, async (req, res) => {
 router.post('/login', async (req, res) => {
     try {
     const { username, password } = req.body;
-    const user = await User.findOne({ where: { username: username } });
+    let user = await User.findOne({ where: { username: username } });
     if (!user) {
-    return res.status(404).json({ error: "User not found" });
+        user = await User.findOne({ where: { email: username } });
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
     }
     const isValidPassword = await bcrypt.compare(password, user.password);
     if (!isValidPassword) {

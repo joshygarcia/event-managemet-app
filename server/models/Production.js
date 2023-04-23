@@ -51,16 +51,5 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
-    Production.associate = function(models) {
-        Production.belongsToMany(models.Events, {
-            through: "EventProduction",
-            foreignKey: "productionId",
-            references: {
-                model: "Production",
-                key: "productionId"
-            }
-        });
-    };
-
     return Production;
 }

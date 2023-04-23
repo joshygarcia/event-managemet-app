@@ -67,10 +67,6 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true
         }
     }, { timestamps: false } );
-
-    Venue.associate = function(models) {
-
-    };
-
+    
     return Venue;
 }

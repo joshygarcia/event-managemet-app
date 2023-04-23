@@ -2,11 +2,7 @@ module.exports = (sequelize, DataTypes) => {
     const Manager = sequelize.define('Manager', {
         userId: {
             type: DataTypes.INTEGER,
-            primaryKey: true,
-            references: {
-                model: 'Users',
-                key: 'userId'
-            }
+            primaryKey: true
         },
         jobTitle: {
             type: DataTypes.STRING,
@@ -31,31 +27,7 @@ module.exports = (sequelize, DataTypes) => {
                 isNumeric: true
             }
         }
-    }, { timestamps: false, primaryKey: false });
+    }, { timestamps: false });
 
-    Manager.associate = function(models) {
-        Manager.hasMany(models.Events, {
-            foreignKey: {
-                name: "managerId"
-            },
-            references: {
-                model: 'Manager',
-                key: 'userId'
-            }
-        });
-        Manager.belongsTo(models.User, {
-            foreignKey: {
-                name: "userId", 
-                allowNull: false
-            },
-            references: {
-                model: 'Users',
-                key: 'userId'
-            },
-            onDelete: "cascade",
-            hooks: true,
-            unique: true
-        });  
-    };
     return Manager;
 }
