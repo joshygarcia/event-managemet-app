@@ -1,6 +1,5 @@
 import { useState } from 'react';
 // import the CSS file
-import '../css/login.css';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -47,8 +46,8 @@ function Login() {
   };
 
   return (
-    <form className="container" onSubmit={handleSubmit}>
-      <label htmlFor="username">Username:</label>
+    <form className="" onSubmit={handleSubmit}>
+      <label htmlFor="username">Email or Username:</label>
       <input type="text" id="username" name="username" value={username} onChange={handleUsernameChange} />
       <label htmlFor="password">Password:</label>
       <input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} />

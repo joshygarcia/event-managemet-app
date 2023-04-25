@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import '../css/landing.css'
 import { useNavigate } from 'react-router-dom';
 
 const Landing = () => {
@@ -18,27 +17,27 @@ const Landing = () => {
   }, []);
 
   return (
-    <div className="landing-container">
-        <div className="landing-login">
-            <button className="landing-login-btn"
+    <div className="bg-gray-500 min-h-screen">
+        <div className="">
+            <button className=""
             onClick={handleLogin}
             >
               Login
             </button>
         </div>
-        <div className="landing-main-content">
+        <div className="">
             {/* <img src="../../public/level-up-icon-white.png" alt="" /> */}
-            <button className="landing-register"
+            <button className=""
             onClick={handleRegister}
             >
             Register
             </button>
         </div>
-        <div className="landing-text">
-          <h1 className="landing-title">
+        <div className="">
+          <h1 className="">
 
           </h1>
-          <p className="landing-paragraph">
+          <p className="">
             
           </p>
         </div>
