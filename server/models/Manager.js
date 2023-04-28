@@ -1,33 +1,55 @@
 module.exports = (sequelize, DataTypes) => {
-    const Manager = sequelize.define('Manager', {
-        userId: {
-            type: DataTypes.INTEGER,
-            primaryKey: true
+  const Manager = sequelize.define(
+    "Manager",
+    {
+      userId: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+      },
+      jobTitle: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isIn: [
+            [
+              "EventManager",
+              "SalesManager",
+              "MarketingManager",
+              "HumanResourcesManager",
+              "AccountingManager",
+              "ITManager",
+            ],
+          ],
         },
-        jobTitle: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isIn: [['EventManager', 'SalesManager', 'MarketingManager', 'HumanResourcesManager', 'AccountingManager', 'ITManager']]
-            },
-            defaultValue: 'EventManager'
+        defaultValue: "EventManager",
+      },
+      department: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isIn: [
+            [
+              "Event",
+              "Sales",
+              "Marketing",
+              "Human Resources",
+              "Accounting",
+              "IT",
+            ],
+          ],
         },
-        department: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isIn: [['Event', 'Sales', 'Marketing', 'Human Resources', 'Accounting', 'IT']]
-            },
-            defaultValue: 'Event'
+        defaultValue: "Event",
+      },
+      salary: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          isNumeric: true,
         },
-        salary: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                isNumeric: true
-            }
-        }
-    }, { timestamps: false });
+      },
+    },
+    { timestamps: false }
+  )
 
-    return Manager;
+  return Manager
 }

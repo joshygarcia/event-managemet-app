@@ -41,8 +41,7 @@ module.exports = (sequelize, DataTypes) => {
         name: {
             type: DataTypes.STRING,
             validate: {
-                len: [2, 34],
-                isAlpha: true
+                len: [2, 34]
             }
         },
         phone: {

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from 'react-router-dom';
+import { Card, TextInput, Button, Flex } from "@tremor/react";
 
 const Landing = () => {
   let navigate = useNavigate()
@@ -17,21 +18,26 @@ const Landing = () => {
   }, []);
 
   return (
-    <div className="bg-gray-500 min-h-screen">
-        <div className="">
-            <button className=""
-            onClick={handleLogin}
+    <Flex 
+      className="min-h-screen"
+      justifyContent="center"
+      alignItems="center"
+    >
+        <div className="w-32 flex flex-col">
+            <Button className="mb-5"
+              onClick={handleLogin}
+              size="xl"
+              variant="secondary"
             >
               Login
-            </button>
-        </div>
-        <div className="">
+            </Button>
             {/* <img src="../../public/level-up-icon-white.png" alt="" /> */}
-            <button className=""
+            <Button className=""
             onClick={handleRegister}
+            size="xl"
             >
             Register
-            </button>
+            </Button>
         </div>
         <div className="">
           <h1 className="">
@@ -41,7 +47,7 @@ const Landing = () => {
             
           </p>
         </div>
-    </div>
+    </Flex>
   )
 }
 

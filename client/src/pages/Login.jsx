@@ -1,62 +1,110 @@
-import { useState } from 'react';
-// import the CSS file
+import { useState } from "react"
+import { Card, Text, TextInput, Button, Flex } from "@tremor/react"
+import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
-function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+const Login = () => {
+  const [formData, setFormData] = useState({ username: "", password: "" })
+  const [error, setError] = useState({ user: false, password: false })
+  const [loading, setLoading] = useState(false)
+  let navigate = useNavigate()
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
+  const handleInputChange = (event) => {
+    const { name, value } = event.target
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }))
+  }
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-    setError('');
+    event.preventDefault()
+    setLoading(true)
+    setError("")
 
     try {
-      const response = await fetch('http://localhost:3000/api/user/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
+      const response = await loginUser(formData.username, formData.password)
 
       if (response.ok) {
-        const { token } = await response.json();
-        localStorage.setItem('accessToken', token); // Store the token in local storage
+        const { token } = await response.json()
+        localStorage.setItem("accessToken", token)
         // TODO: Redirect to the protected page
+        navigate("/dashboard")
       } else {
-        const { error } = await response.json();
-        setError(error)
-        throw new Error(error);
+        const { errors } = await response.json()
+        setError(errors)
+        throw new Error(errors)
       }
     } catch (err) {
-      setError(err.message);
+      console.error(err)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   return (
-    <form className="" onSubmit={handleSubmit}>
-      <label htmlFor="username">Email or Username:</label>
-      <input type="text" id="username" name="username" value={username} onChange={handleUsernameChange} />
-      <label htmlFor="password">Password:</label>
-      <input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} />
-      <button type="submit" disabled={loading}>
-        {loading ? 'Loading...' : 'Login'}
-      </button>
-      {error && <p>{error}</p>}
-    </form>
-  );
+    <Flex className="min-h-screen" justifyContent="center" alignItems="center">
+      <div className="flex w-full flex-col " id="login-form">
+        <Text className="mb-10 text-center text-2xl text-black">Login</Text>
+        <form
+          className="flex w-1/2 flex-col justify-center self-center align-middle"
+          onSubmit={handleSubmit}
+        >
+          <TextInput
+            id="username"
+            name="username"
+            value={formData.username}
+            onChange={handleInputChange}
+            error={error.user}
+            errorMessage={error.user}
+            placeholder="Email or Username"
+          />
+          <TextInput
+            className="mt-6"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleInputChange}
+            error={error.password}
+          />
+          <Button
+            type="submit"
+            className="mt-8 w-32 self-center"
+            disabled={loading}
+            loading={loading}
+          >
+            Login
+          </Button>
+          <Text className="text-md mb-10 mt-10 text-center text-gray-400">
+            Dont have an account?{" "}
+            <Link to="/register" className="text-blue-500">
+              Register
+            </Link>
+          </Text>
+        </form>
+      </div>
+      <div
+        className="flex h-screen w-full flex-col items-center justify-center bg-slate-900 text-center"
+        id="register-link"
+      >
+        <img
+          src="../public/level-up-icon-white.png"
+          alt="Level Up Logo"
+          className="h-32 w-32"
+        />
+      </div>
+    </Flex>
+  )
 }
 
-export default Login;
+// Function to handle API call
+async function loginUser(username, password) {
+  return await fetch("http://localhost:3000/api/user/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ username, password }),
+  })
+}
+
+export default Login
