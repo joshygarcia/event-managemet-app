@@ -1,0 +1,24 @@
+ .gitignore             |    23 [32m+[m
+ README.md              |    73 [32m+[m
+ dist/output.css        |   615 [32m++[m
+ event-managemet-app    |     1 [32m+[m
+ package-lock.json      | 17753 [32m+++++++++++++++++++++++++++++++++++++++++++++++[m
+ package.json           |    45 [32m+[m
+ public/favicon.ico     |   Bin [31m0[m -> [32m3870[m bytes
+ public/images/logo.png |   Bin [31m0[m -> [32m20557[m bytes
+ public/index.html      |    43 [32m+[m
+ public/logo192.png     |   Bin [31m0[m -> [32m5347[m bytes
+ public/logo512.png     |   Bin [31m0[m -> [32m9664[m bytes
+ public/manifest.json   |    25 [32m+[m
+ public/robots.txt      |     3 [32m+[m
+ src/App.css            |    38 [32m+[m
+ src/App.js             |    20 [32m+[m
+ src/App.test.js        |     8 [32m+[m
+ src/index.css          |     3 [32m+[m
+ src/index.js           |    17 [32m+[m
+ src/logo.svg           |     1 [32m+[m
+ src/pages/Auth.js      |    52 [32m+[m
+ src/reportWebVitals.js |    13 [32m+[m
+ src/setupTests.js      |     5 [32m+[m
+ tailwind.config.js     |    11 [32m+[m
+ 23 files changed, 18749 insertions(+)

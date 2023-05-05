@@ -1,7 +1,7 @@
 import "../App.css";
 import React, { useState, useEffect } from "react";
 
-function Auth() {
+function Register() {
   const [hasAccount, setHasAccount] = useState(true);
   function account() {
     if (hasAccount == true) {
@@ -20,22 +20,28 @@ function Auth() {
             <a href="/">
               <img
                 src="images/Black_Logo.png"
-                className="mx-auto mt-14"
+                className="mx-auto "
                 alt="logo"
               />
             </a>
           </div>
-          <form className="border-2 mx-auto rounded shadow-xl mt-12 items-center w-2/5">
-            <p className="text-2xl pt-4 font-semibold">Login</p>
-            <p>
-              Not registered yet? <a href="/register">Create one</a>
-            </p>
+          <form className="border-2 mx-auto rounded shadow-xl mt-12 pt-4 items-center w-2/5">
+            <p className="text-2xl pt-4 font-semibold">Create Account</p>
+
             <div className="pt-2 px-4 text-left w-full">
+              <label className="text-primary-body  font-medium">Name*</label>
+              <input
+                className="rounded border-gray-300 w-full bg-violet-200 my-1 text-primary-body"
+                type="text"
+                placeholder="Username"
+                name="Username"
+              />
+
               <label className="text-primary-body  font-medium">
-                Email Address
+                Email Address*
               </label>
               <input
-                className="rounded border-gray-300 bg-violet-200 w-full my-1 text-primary-body"
+                className="rounded border-gray-300 w-full bg-violet-200 my-1 text-primary-body"
                 type="email"
                 placeholder="name@email.com"
                 name="email"
@@ -43,7 +49,7 @@ function Auth() {
             </div>
 
             <div className="w-full  px-4 text-left">
-              <label className="text-primary-body font-medium">Password</label>
+              <label className="text-primary-body font-medium">Password*</label>
               <div className="w-full my-1 relative">
                 <input
                   className="rounded border-gray-300 w-full bg-violet-200 relative top-0 pr-10"
@@ -53,10 +59,16 @@ function Auth() {
                 />
               </div>
             </div>
+            <p>
+              <span>Already have an account? </span>
+              <span>
+                <a href="/Auth">Log in</a>
+              </span>
+            </p>
             <div className="py-4 px-4">
-              <button className="bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white py-2 w-full  rounded-full">
+              <button className="bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white py-2 w-full  rounded-full ">
                 {" "}
-                LOGIN
+                Create your account
               </button>
             </div>
           </form>
@@ -72,4 +84,4 @@ function Auth() {
     </div>
   );
 }
-export default Auth;
+export default Register;
