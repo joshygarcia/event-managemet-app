@@ -1,6 +1,10 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { Card, TextInput, Button, Flex } from "@tremor/react"
+import { Button } from "@tremor/react"
+import image1 from "/event-1.png"
+import image2 from "/event-2.png"
+import image3 from "/event-3.png"
+import image4 from "/event-4.png"
 
 const Landing = () => {
   let navigate = useNavigate()
@@ -36,7 +40,7 @@ const Landing = () => {
             Login
           </Button>
           <Button
-            className="bg-purple-500 hover:bg-purple-700"
+            className="border-none bg-purple-500 hover:bg-purple-700"
             onClick={handleRegister}
           >
             Register
@@ -52,19 +56,22 @@ const Landing = () => {
             <p className="mb-4 text-gray-300">
               Want to plan and execute a memorable event without the stress?
               Look no further than{" "}
-              <span className="capitalize text-purple-700 ">LevelUP</span>. Our
+              <span className="capitalize text-purple-500 ">LevelUP</span>. Our
               event management software and expert managers make it easy to
               plan, organize, and execute any event. Start planning your dream
               event today with{" "}
-              <span className="capitalize text-purple-700 ">LevelUP</span>.
+              <span className="capitalize text-purple-500 ">LevelUP</span>.
             </p>
-            <Button className="self-center bg-purple-500 hover:bg-purple-700">
+            <Button
+              className="self-center border-none bg-purple-500 hover:bg-purple-700"
+              onClick={handleRegister}
+            >
               Register
             </Button>
           </div>
           <div className="justify-end md:flex md:w-1/2">
             <img
-              src="https://via.placeholder.com/400"
+              src={image1}
               alt="Services"
               className="w-full rounded-md md:w-3/4"
             />
@@ -77,17 +84,17 @@ const Landing = () => {
             </h2>
             <p className="mb-4 text-gray-300">
               Planning an event can be overwhelming, but with{" "}
-              <span className="capitalize text-purple-700 ">LevelUP</span>, it
+              <span className="capitalize text-purple-500 ">LevelUP</span>, it
               doesn't have to be. Our event management software simplifies every
               aspect of event planning, from venue selection to logistics
               coordination. Sign up today to experience hassle-free event
               planning with{" "}
-              <span className="capitalize text-purple-700 ">LevelUP</span>.
+              <span className="capitalize text-purple-500 ">LevelUP</span>.
             </p>
           </div>
           <div className="md:flex md:w-1/2 md:justify-start">
             <img
-              src="https://via.placeholder.com/400"
+              src={image2}
               alt="Innovative Solutions"
               className="w-full rounded-md md:w-3/4"
             />
@@ -100,20 +107,41 @@ const Landing = () => {
             </h2>
             <p className="mb-4 text-gray-300">
               Want to host an event that truly stands out?{" "}
-              <span className="capitalize text-purple-700 ">LevelUP</span> can
+              <span className="capitalize text-purple-500 ">LevelUP</span> can
               help. Our event management software and expert team give you
               access to the best venues, catering, and production services, so
               you can create a unique and memorable event. Get started today and
               make your event dreams a reality with{" "}
-              <span className="capitalize text-purple-700 ">LevelUP</span>.
+              <span className="capitalize text-purple-500 ">LevelUP</span>.
             </p>
           </div>
           <div className="justify-end md:flex md:w-1/2">
             <img
-              src="https://via.placeholder.com/400"
+              src={image4}
               alt="Customer Support"
               className="w-full rounded-md md:w-3/4 2xl:m-0"
             />
+          </div>
+        </section>
+        <section
+          id="register"
+          className="flex w-11/12 flex-col items-center space-y-4 p-8 md:w-3/4 md:flex-col md:space-y-0 lg:w-1/2 xl:w-7/12 2xl:w-7/12"
+        >
+          <div className="text-center md:w-1/2">
+            <h2 className="mb-4 text-3xl font-semibold">Get Started Today</h2>
+            <p className="mb-4 text-gray-300">
+              Ready to take your event planning to the next level? Sign up now
+              and start experiencing the benefits of{" "}
+              <span className="capitalize text-purple-500 ">LevelUP</span>.
+            </p>
+          </div>
+          <div className="md:flex md:w-1/2 md:flex-col md:justify-start">
+            <Button
+              className="self-center border-none bg-purple-500 hover:bg-purple-700"
+              onClick={handleRegister}
+            >
+              Register
+            </Button>
           </div>
         </section>
       </main>
