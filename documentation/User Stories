@@ -1,0 +1,40 @@
+1. As the customer, I want to view the status of my event with checkpoints detailing every point of progress, so that I can follow along with the status of my event 
+and be able to see what has been completed. (The customer wants access to the sequences or states of their event)
+
+2. As the Director of Marketing, I want access to the number of events and the size of events in previous years, so that I can compare previous events to the 
+size and number of events covered this year. (The user wants privileges that allow them to access them numbers and sizes of events in previous years)
+
+3. As the local event manager, I want access to the contact information of everyone involved in the event such as caterers and electricians,so that if something is
+missing then I can contact the parties responsible. (The user wants privileges and access to contact information of all parties involved in the event)
+
+4. As the customer, I want to know if canceling my event will result in a full refund or partial refund depending on the time elapsed since my request, so that I can
+gauge whether or not it is worth it to cancel my event. 
+
+5. As the customer, I want to share the details of my event with others, so that I can invite other people and share the event information with those people.
+
+6. As the customer, I want to be able to create an event of any size and schedule it in advance on the application, so that my event is registered and the date 
+is set for a specific day.
+
+7. As the customer, I want to select the location that the event will be held at, so that the company can contact nearby organizations for catering and services.
+
+8. As the regional event manager, I want to be able to contact the customer to discuss the details of the event, so that I get a good understanding of the services 
+that they want me to provide for the event.
+
+9. As the Director of Marketing, I want access to the costs of every event in previous years, so that I can compare the costs of previous events to the costs of 
+the events being held this year.
+
+10. As the customer, I want to be able to change the date of my event in case the day I chose becomes inconvenient, so that the event can be held on a different day.
+
+11. As a manager, I want access to the progress that the regional and local event managers have accomplished, so that I may gauge their progress and give them help 
+if they are falling behind on their schedule.
+
+12. As the manager, I want there to be multiple tiers of payment when scheduling an event, so that the customers who pay for a higher tier get more 
+services such as the ability to create a larger than usual event with more services than the normal plan.
+
+13. As the customer, I want to be able to select what food should not be allowed to be served at the event, so that people who are allergic to certain foods
+can come without worry.
+
+14. As the customer, I want to be able to rate the services that have been provided by the company, so that I may judge the services adequately and leave a review.
+
+15. As the customer, I want to be able to make an account to hold my payment information and my event information, so that the information can be saved somewhere 
+that I can view at any time.
