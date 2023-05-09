@@ -49,4 +49,14 @@ router.post("/", validateToken, async (req, res) => {
   }
 })
 
+router.get("/", validateToken, async (req, res) => {
+  console.log("get events")
+  try {
+    const events = await Events.findAll()
+    res.json(events)
+  } catch (error) {
+    res.status(500).json({ error: error.message })
+  }
+})
+
 module.exports = router
