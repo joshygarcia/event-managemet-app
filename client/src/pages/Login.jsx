@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Card, Text, TextInput, Button, Flex } from "@tremor/react"
+import { Text, TextInput, Button, Flex } from "@tremor/react"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 
@@ -7,7 +7,7 @@ const Login = () => {
   const [formData, setFormData] = useState({ username: "", password: "" })
   const [error, setError] = useState({ user: false, password: false })
   const [loading, setLoading] = useState(false)
-  let navigate = useNavigate()
+  const navigate = useNavigate()
 
   const handleInputChange = (event) => {
     const { name, value } = event.target
@@ -87,7 +87,7 @@ const Login = () => {
         id="register-link"
       >
         <img
-          src="../public/level-up-icon-white.png"
+          src="/level-up-icon-white.png"
           alt="Level Up Logo"
           className="h-32 w-32"
         />
@@ -96,7 +96,7 @@ const Login = () => {
   )
 }
 
-// Function to handle API call
+// Function to handle login API call
 async function loginUser(username, password) {
   return await fetch("http://localhost:3000/api/user/login", {
     method: "POST",

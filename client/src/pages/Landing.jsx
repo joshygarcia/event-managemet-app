@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { Button } from "@tremor/react"
+import { Button } from "flowbite-react"
 import image1 from "/event-1.png"
 import image2 from "/event-2.png"
 import image3 from "/event-3.png"
@@ -34,7 +34,6 @@ const Landing = () => {
         <div className="flex space-x-4">
           <Button
             className="hover:bg-blue-500 hover:text-white"
-            variant="secondary"
             onClick={handleLogin}
           >
             Login
@@ -148,7 +147,7 @@ const Landing = () => {
       <footer className="mt-8 bg-gray-800 py-4">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm text-gray-300">
-            © {new Date().getFullYear()} Your Company Name. All rights reserved.
+            © {new Date().getFullYear()} LevelUp. All rights reserved.
           </p>
         </div>
       </footer>
