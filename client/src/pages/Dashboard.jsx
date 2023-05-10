@@ -26,8 +26,6 @@ export default function Example() {
     "Update Event 10 description",
   ]
 
-  console.log(events)
-
   return (
     <main className="mx-4 w-full self-center">
       <Title className="ml-2 mt-2 self-start text-2xl">Dasboard</Title>

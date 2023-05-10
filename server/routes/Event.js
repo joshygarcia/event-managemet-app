@@ -1,16 +1,32 @@
 const express = require("express")
 const router = express.Router()
-const { User, Manager, Events, Venue, Company } = require("../models")
-const bcrypt = require("bcrypt")
-const jwt = require("jsonwebtoken")
+const {
+  Manager,
+  Events,
+  Venue,
+  Company,
+  EventCatering,
+  EventProduction,
+} = require("../models")
+
 const { validateToken } = require("../middlewares/AuthMiddleware")
+const { ca } = require("date-fns/locale")
 
 //event
 router.post("/create", validateToken, async (req, res) => {
   console.log("create event")
   try {
-    const { name, date, time, description, venueId, companyId, managerId } =
-      req.body
+    const {
+      name,
+      date,
+      time,
+      description,
+      venueId,
+      companyId,
+      managerId,
+      caterId,
+      productionId,
+    } = req.body
 
     console.log(req.body)
 
@@ -34,6 +50,25 @@ router.post("/create", validateToken, async (req, res) => {
         companyId,
         managerId,
       })
+
+      if (caterId) {
+        caterId.forEach(async (cater) => {
+          await EventCatering.create({
+            eventId: newEvent.eventId,
+            caterId,
+          })
+        })
+      }
+
+      if (productionId) {
+        productionId.forEach(async (production) => {
+          await EventProduction.create({
+            eventId: newEvent.eventId,
+            productionId,
+          })
+        })
+      }
+
       res.status(201).json(newEvent)
     }
   } catch (error) {

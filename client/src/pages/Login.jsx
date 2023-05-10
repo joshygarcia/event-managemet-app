@@ -101,7 +101,7 @@ const Login = () => {
 
 // Function to handle login API call
 async function loginUser(username, password) {
-  return await fetch("http://localhost:3000/api/user/login", {
+  return await fetch("https://levelup-server.onrender.com/api/user/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -26,7 +26,13 @@ function Register() {
   const handleSubmit = (event) => {
     event.preventDefault()
     // TODO: Handle form submission logic
-    //
+    fetch("https://levelup-server.onrender.com/api/user/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
   }
 
   return (
