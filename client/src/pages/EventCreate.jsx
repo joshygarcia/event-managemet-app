@@ -11,13 +11,12 @@ import {
   MultiSelectBoxItem,
 } from "@tremor/react"
 import { useNavigate } from "react-router-dom"
+import { fetchApi } from "../utils/api"
+import { useEventsContext } from "../components/EventsContext"
 
 const EventCreate = () => {
-  const [venues, setVenues] = useState([])
-  const [companies, setCompanies] = useState([])
-  const [managers, setManagers] = useState([])
-  const [caters, setCaters] = useState([])
-  const [productions, setProductions] = useState([])
+  const { events, venues, companies, managers, caters, productions } =
+    useEventsContext()
   const navigate = useNavigate()
   const [totalCost, setTotalCost] = useState(0) // This will hold the total cost
 
@@ -31,7 +30,7 @@ const EventCreate = () => {
     managerId: "",
     caterId: [],
     productionId: [],
-    expectedCapacity: 0,
+    expectedCapacity: "",
   })
 
   useEffect(() => {
@@ -61,28 +60,6 @@ const EventCreate = () => {
     setTotalCost(cost)
   }, [formData, venues, caters, productions])
 
-  const fetchApi = async (url, setter) => {
-    const response = await fetch(url, {
-      headers: {
-        accessToken: localStorage.getItem("accessToken"),
-      },
-    })
-
-    const data = await response.json()
-    setter(data)
-  }
-
-  useEffect(() => {
-    fetchApi("https://levelup-server.onrender.com/api/manager", setManagers)
-    fetchApi("https://levelup-server.onrender.com/api/venue", setVenues)
-    fetchApi("https://levelup-server.onrender.com/api/company", setCompanies)
-    fetchApi("https://levelup-server.onrender.com/api/cater", setCaters)
-    fetchApi(
-      "https://levelup-server.onrender.com/api/production",
-      setProductions
-    )
-  }, [])
-
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData((prevState) => ({ ...prevState, [name]: value }))
@@ -92,17 +69,14 @@ const EventCreate = () => {
     e.preventDefault()
 
     try {
-      const response = await fetch(
-        "https://levelup-server.onrender.com/api/event/create",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            accessToken: localStorage.getItem("accessToken"),
-          },
-          body: JSON.stringify(formData),
-        }
-      )
+      const response = await fetch("api/event/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          accessToken: localStorage.getItem("accessToken"),
+        },
+        body: JSON.stringify(formData),
+      })
 
       if (response.ok) {
         navigate("/dashboard/events")
@@ -116,9 +90,12 @@ const EventCreate = () => {
   }
 
   return (
-    <Card className="p-4">
+    <Card className="mx-auto my-auto flex h-5/6 w-2/3 flex-col justify-center p-8">
       <Title className="mb-4">Create Event</Title>
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={handleSubmit}
+        className="flex h-full flex-col content-between justify-between"
+      >
         <TextInput
           name="name"
           value={formData.name}
@@ -266,7 +243,7 @@ const EventCreate = () => {
           Total Cost: <span className="text-green-400">$ {totalCost}</span>
         </Text>
 
-        <Button type="submit" className="mt-4">
+        <Button type="submit" className="mt-4 w-2/3 self-center">
           Create Event
         </Button>
       </form>

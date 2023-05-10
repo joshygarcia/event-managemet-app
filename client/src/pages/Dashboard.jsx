@@ -1,12 +1,18 @@
 import { Card, Title, Text, Tab, TabList, Grid } from "@tremor/react"
 import { useState, useEffect } from "react"
 import { BellIcon } from "@heroicons/react/24/solid"
-import { useEvents } from "../components/EventsContext"
-import { useUser } from "../components/UserContext"
+import { useEventsContext } from "../components/EventsContext"
+import { Rating } from "flowbite-react"
 
 export default function Example() {
-  const { user } = useUser()
-  const { events } = useEvents()
+  const { events } = useEventsContext()
+
+  // useEffect(() => {
+  //   async function fetchData(/api/users) {
+  //     const usersData = await setUsers()
+  //     setUsers(usersData)
+  //   }
+  // }, [setUsers])
 
   const notifications = [
     "New registration for Event 1",
@@ -14,24 +20,35 @@ export default function Example() {
   ]
 
   const tasks = [
-    "Update Event 1 description",
-    "Update Event 2 description",
-    "Update Event 3 description",
-    "Update Event 4 description",
-    "Update Event 5 description",
-    "Update Event 6 description",
-    "Update Event 7 description",
-    "Update Event 8 description",
-    "Update Event 9 description",
-    "Update Event 10 description",
+    "Create a new venue",
+    "Schedule a rehearsal with performers",
+    "Order decorations for the event",
+    "Research catering options",
+    "Meet with sponsors",
+    "Develop marketing strategy for the event",
+    "Review contracts with vendors",
+    "Coordinate transportation for attendees",
+    "Organize event merchandise",
+    "Create an event program",
+  ]
+
+  const fakeEvents = [
+    {
+      name: "Spring Music Festival",
+      date: "2023-05-01",
+      reviews: 4.5,
+    },
+    {
+      name: "Summer Block Party",
+      date: "2023-05-08",
+      reviews: 3.8,
+    },
   ]
 
   return (
     <main className="mx-4 w-full self-center">
       <Title className="ml-2 mt-2 self-start text-2xl">Dasboard</Title>
-      <p className="ml-2 mt-2 self-start text-gray-400">
-        Welcome {user && user.name}
-      </p>
+      <p className="ml-2 mt-2 self-start text-gray-400">Welcome</p>
       <Grid numColsMd={2} numColsLg={3} className="mt-6 gap-6">
         <Card>
           <h2 className="mb-2 text-xl font-semibold">Upcoming Events</h2>
@@ -54,7 +71,28 @@ export default function Example() {
             <p>No events</p>
           )}
         </Card>
-        <Card></Card>
+        <Card>
+          <div>
+            <h2 className="mb-2 text-xl font-semibold">Recent Events</h2>
+            <ul>
+              {fakeEvents.map((event, index) => (
+                <li key={index}>
+                  <p>
+                    <strong>{event.name}</strong> -{" "}
+                    {new Date(event.date).toLocaleDateString()}
+                  </p>
+                  <Rating value={event.reviews}>
+                    <Rating.Star />
+                    <Rating.Star />
+                    <Rating.Star />
+                    <Rating.Star />
+                    <Rating.Star filled={false} />
+                  </Rating>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Card>
         <Card>
           <h2 className="mb-2 text-xl font-semibold">Notifications</h2>
           <ul>

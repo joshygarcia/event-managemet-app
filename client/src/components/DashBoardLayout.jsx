@@ -2,20 +2,8 @@ import React from "react"
 import { Link, Outlet } from "react-router-dom"
 import { Sidebar } from "flowbite-react"
 import { UserIcon, ChartPieIcon, TicketIcon } from "@heroicons/react/24/solid"
-import { useEffect } from "react"
-import { useEvents } from "./EventsContext"
-import { getEvents } from "./EventsContext"
 
 const DashboardLayout = () => {
-  const { setEvents } = useEvents()
-  useEffect(() => {
-    async function fetchData() {
-      const eventsData = await getEvents()
-      setEvents(eventsData)
-    }
-
-    fetchData()
-  }, [setEvents])
   return (
     <div className="flex h-screen">
       <Sidebar aria-label="Sidebar with content separator example">

@@ -142,9 +142,38 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign(
       { userId: user.userId, role: user.role },
       process.env.JWT_SECRET,
-      { expiresIn: "1h" }
+      { expiresIn: "2h" }
     )
     res.json({ token, user })
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+//get user info from token
+router.get("/info", async (req, res) => {
+  try {
+    const accessToken = req.header("accessToken")
+    const payload = jwt.verify(accessToken, process.env.JWT_SECRET)
+    if (payload.role === "admin") {
+      const user = await User.findOne({ where: { userId: payload.userId } })
+      res.json({ user })
+    } else if (payload.role === "manager") {
+      const user = await User.findOne({ where: { userId: payload.userId } })
+      const manager = await Manager.findOne({
+        where: { userId: payload.userId },
+      })
+      res.json({ user, manager })
+    } else if (payload.role === "company") {
+      const user = await User.findOne({ where: { userId: payload.userId } })
+      const company = await Company.findOne({
+        where: { userId: payload.userId },
+      })
+      res.json({ user, company })
+    } else {
+      res.status(401).json({ error: "Invalid Token" })
+    }
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: error.message })

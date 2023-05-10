@@ -1,72 +1,37 @@
 import { createContext, useContext, useState } from "react"
+import { fetchApi } from "../utils/api"
+import { useEffect } from "react"
 
 const EventsContext = createContext()
 
-export function useEvents() {
+export function useEventsContext() {
   return useContext(EventsContext)
-}
-
-export async function getEvents() {
-  const accessToken = localStorage.getItem("accessToken")
-  const response = await fetch(
-    "https://levelup-server.onrender.com/api/event",
-    {
-      headers: {
-        accessToken,
-      },
-    }
-  )
-  const data = await response.json()
-  return data
-}
-
-export async function getVenues() {
-  const accessToken = localStorage.getItem("accessToken")
-  const response = await fetch(
-    "https://levelup-server.onrender.com/api/venue",
-    {
-      headers: {
-        accessToken,
-      },
-    }
-  )
-  const data = await response.json()
-  return data
-}
-
-export async function getCompanies() {
-  const accessToken = localStorage.getItem("accessToken")
-  const response = await fetch(
-    "https://levelup-server.onrender.com/api/company",
-    {
-      headers: {
-        accessToken,
-      },
-    }
-  )
-  const data = await response.json()
-  return data
-}
-
-export async function getManagers() {
-  const accessToken = localStorage.getItem("accessToken")
-  const response = await fetch(
-    "https://levelup-server.onrender.com/api/manager",
-    {
-      headers: {
-        accessToken,
-      },
-    }
-  )
-  const data = await response.json()
-  return data
 }
 
 export function EventsProvider({ children }) {
   const [events, setEvents] = useState([])
+  const [venues, setVenues] = useState([])
+  const [companies, setCompanies] = useState([])
+  const [managers, setManagers] = useState([])
+  const [caters, setCaters] = useState([])
+  const [productions, setProductions] = useState([])
+  const [user, setUser] = useState([])
+
+  useEffect(() => {
+    fetchApi("/api/user/info", setUser)
+    fetchApi("/api/event", setEvents)
+    fetchApi("/api/event", setEvents)
+    fetchApi("/api/manager", setManagers)
+    fetchApi("/api/venue", setVenues)
+    fetchApi("/api/company", setCompanies)
+    fetchApi("/api/cater", setCaters)
+    fetchApi("/api/production", setProductions)
+  }, [])
 
   return (
-    <EventsContext.Provider value={{ events, setEvents }}>
+    <EventsContext.Provider
+      value={{ events, venues, companies, managers, caters, productions, user }}
+    >
       {children}
     </EventsContext.Provider>
   )

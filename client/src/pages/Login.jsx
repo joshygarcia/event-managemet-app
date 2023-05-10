@@ -2,14 +2,12 @@ import { useState } from "react"
 import { Text, TextInput, Button, Flex } from "@tremor/react"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
-import { useUser } from "../components/UserContext"
 
 const Login = () => {
   const [formData, setFormData] = useState({ username: "", password: "" })
   const [error, setError] = useState({ user: false, password: false })
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-  const { setUser } = useUser()
 
   const handleInputChange = (event) => {
     const { name, value } = event.target
@@ -26,7 +24,6 @@ const Login = () => {
 
       if (response.ok) {
         const { token, user } = await response.json()
-        setUser(user)
         localStorage.setItem("accessToken", token)
         // TODO: Redirect to the protected page
         navigate("/dashboard")
@@ -101,7 +98,7 @@ const Login = () => {
 
 // Function to handle login API call
 async function loginUser(username, password) {
-  return await fetch("https://levelup-server.onrender.com/api/user/login", {
+  return await fetch("/api/user/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

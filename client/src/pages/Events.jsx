@@ -3,12 +3,11 @@ import { useState, useEffect } from "react"
 import { Button, Timeline } from "flowbite-react"
 import { CalendarIcon } from "@heroicons/react/24/solid"
 import { Card } from "@tremor/react"
-import { getEvents } from "../components/EventsContext"
-import { useEvents } from "../components/EventsContext"
+import { useEventsContext } from "../components/EventsContext"
 import { Link } from "react-router-dom"
 
 const Events = () => {
-  const { events } = useEvents()
+  const { events } = useEventsContext()
   const [loading, setLoading] = useState(false)
   return (
     <div className="mx-4 mb-4 h-5/6 w-full self-center">

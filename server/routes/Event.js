@@ -79,7 +79,7 @@ router.post("/create", validateToken, async (req, res) => {
 router.get("/", validateToken, async (req, res) => {
   console.log("get events")
   try {
-    const events = await Events.findAll()
+    const events = await Events.findAll({ order: [["date", "ASC"]] })
     res.json(events)
   } catch (error) {
     res.status(500).json({ error: error.message })
