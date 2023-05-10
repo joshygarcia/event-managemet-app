@@ -1,41 +1,38 @@
 import React from "react"
 import { useState, useEffect } from "react"
-import { Timeline } from "flowbite-react"
+import { Button, Timeline } from "flowbite-react"
 import { CalendarIcon } from "@heroicons/react/24/solid"
 import { Card } from "@tremor/react"
+import { getEvents } from "../components/EventsContext"
+import { useEvents } from "../components/EventsContext"
+import { Link } from "react-router-dom"
 
 const Events = () => {
-  const [events, setEvents] = useState([])
+  const { events } = useEvents()
   const [loading, setLoading] = useState(false)
-
-  useEffect(() => {
-    setLoading(true)
-    getEvents()
-      .then((data) => {
-        setEvents(data)
-      })
-      .catch((error) => {
-        console.error(error)
-      })
-      .finally(() => {
-        setLoading(false)
-      })
-  }, [])
-
   return (
     <div className="mx-4 mb-4 h-5/6 w-full self-center">
-      <h2 className="mb-4 text-2xl font-semibold">Upcoming Events</h2>
+      <div>
+        <h2 className="mb-4 text-2xl font-semibold">Upcoming Events</h2>
+        <Link to="create">
+          <Button className="mb-4">Create Event</Button>
+        </Link>
+      </div>
       <Card className="max-h-full overflow-scroll">
         <Timeline className="border-l-2 border-l-blue-800">
           {events.map((event) => (
-            <Timeline.Item key={event.eventId}>
-              <Timeline.Point icon={CalendarIcon} className="-ml-9" />
-              <Timeline.Content className="">
-                <Timeline.Time>{event.date}</Timeline.Time>
-                <Timeline.Title className="my-1">{event.name}</Timeline.Title>
-                <Timeline.Body>{event.description}</Timeline.Body>
-              </Timeline.Content>
-            </Timeline.Item>
+            <Link to={`/dashboard/events/${event.eventId}`}>
+              <Timeline.Item key={event.eventId}>
+                <Timeline.Point icon={CalendarIcon} className="-ml-9" />
+                <Timeline.Content className="">
+                  <Timeline.Time>
+                    {new Date(event.date).toLocaleDateString()}
+                  </Timeline.Time>
+                  <Timeline.Title className="my-1">{event.name}</Timeline.Title>
+                  <Timeline.Body>{event.description}</Timeline.Body>
+                </Timeline.Content>
+              </Timeline.Item>
+            </Link>
           ))}
         </Timeline>
       </Card>
@@ -44,14 +41,3 @@ const Events = () => {
 }
 
 export default Events
-
-async function getEvents() {
-  const accessToken = localStorage.getItem("accessToken")
-  const response = await fetch("http://localhost:3000/api/event", {
-    headers: {
-      accessToken,
-    },
-  })
-  const data = await response.json()
-  return data
-}

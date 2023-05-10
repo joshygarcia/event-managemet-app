@@ -6,7 +6,8 @@ const jwt = require("jsonwebtoken")
 const { validateToken } = require("../middlewares/AuthMiddleware")
 
 //event
-router.post("/", validateToken, async (req, res) => {
+router.post("/create", validateToken, async (req, res) => {
+  console.log("create event")
   try {
     const {
       name,

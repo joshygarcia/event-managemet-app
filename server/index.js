@@ -16,6 +16,12 @@ const db = require("./models")
 const userRouter = require("./routes/User")
 app.use("/api/user", userRouter)
 
+const managerRouter = require("./routes/Manager")
+app.use("/api/manager", managerRouter)
+
+const companyRouter = require("./routes/Company")
+app.use("/api/company", companyRouter)
+
 const eventRouter = require("./routes/Event")
 app.use("/api/event", eventRouter)
 

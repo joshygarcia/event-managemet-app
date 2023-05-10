@@ -2,12 +2,14 @@ import { useState } from "react"
 import { Text, TextInput, Button, Flex } from "@tremor/react"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
+import { useUser } from "../components/UserContext"
 
 const Login = () => {
   const [formData, setFormData] = useState({ username: "", password: "" })
   const [error, setError] = useState({ user: false, password: false })
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+  const { setUser } = useUser()
 
   const handleInputChange = (event) => {
     const { name, value } = event.target
@@ -23,7 +25,8 @@ const Login = () => {
       const response = await loginUser(formData.username, formData.password)
 
       if (response.ok) {
-        const { token } = await response.json()
+        const { token, user } = await response.json()
+        setUser(user)
         localStorage.setItem("accessToken", token)
         // TODO: Redirect to the protected page
         navigate("/dashboard")

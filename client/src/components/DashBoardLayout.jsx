@@ -1,9 +1,21 @@
 import React from "react"
-import { Outlet } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 import { Sidebar } from "flowbite-react"
 import { UserIcon, ChartPieIcon, TicketIcon } from "@heroicons/react/24/solid"
+import { useEffect } from "react"
+import { useEvents } from "./EventsContext"
+import { getEvents } from "./EventsContext"
 
 const DashboardLayout = () => {
+  const { setEvents } = useEvents()
+  useEffect(() => {
+    async function fetchData() {
+      const eventsData = await getEvents()
+      setEvents(eventsData)
+    }
+
+    fetchData()
+  }, [setEvents])
   return (
     <div className="flex h-screen">
       <Sidebar aria-label="Sidebar with content separator example">
@@ -12,17 +24,17 @@ const DashboardLayout = () => {
         </Sidebar.Logo>
         <Sidebar.Items className="flex h-fit flex-col justify-between">
           <Sidebar.ItemGroup>
-            <Sidebar.Item href="/dashboard" icon={ChartPieIcon}>
-              Dashboard
-            </Sidebar.Item>
-            <Sidebar.Item href="/dashboard/events" icon={TicketIcon}>
-              Events
-            </Sidebar.Item>
+            <Link to="/dashboard">
+              <Sidebar.Item icon={ChartPieIcon}>Dashboard</Sidebar.Item>
+            </Link>
+            <Link to="/dashboard/events">
+              <Sidebar.Item icon={TicketIcon}>Events</Sidebar.Item>
+            </Link>
           </Sidebar.ItemGroup>
           <Sidebar.ItemGroup className="mb-10">
-            <Sidebar.Item href="/dashboard/profile" icon={UserIcon}>
-              Profile
-            </Sidebar.Item>
+            <Link to="/dashboard/profile">
+              <Sidebar.Item icon={UserIcon}>Profile</Sidebar.Item>
+            </Link>
           </Sidebar.ItemGroup>
         </Sidebar.Items>
       </Sidebar>

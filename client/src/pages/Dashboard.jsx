@@ -1,22 +1,12 @@
 import { Card, Title, Text, Tab, TabList, Grid } from "@tremor/react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { BellIcon } from "@heroicons/react/24/solid"
+import { useEvents } from "../components/EventsContext"
+import { useUser } from "../components/UserContext"
 
 export default function Example() {
-  const upcomingEvents = [
-    {
-      name: "Event 1",
-      date: "2023-06-01",
-      time: "18:00",
-      location: "Venue A",
-    },
-    {
-      name: "Event 2",
-      date: "2023-06-10",
-      time: "20:00",
-      location: "Venue B",
-    },
-  ]
+  const { user } = useUser()
+  const { events } = useEvents()
 
   const notifications = [
     "New registration for Event 1",
@@ -36,22 +26,35 @@ export default function Example() {
     "Update Event 10 description",
   ]
 
+  console.log(events)
+
   return (
     <main className="mx-4 w-full self-center">
-      <Title className="ml-2 mt-2 self-start text-2xl">Dashboard</Title>
+      <Title className="ml-2 mt-2 self-start text-2xl">Dasboard</Title>
+      <p className="ml-2 mt-2 self-start text-gray-400">
+        Welcome {user && user.name}
+      </p>
       <Grid numColsMd={2} numColsLg={3} className="mt-6 gap-6">
         <Card>
           <h2 className="mb-2 text-xl font-semibold">Upcoming Events</h2>
-          <ul>
-            {upcomingEvents.map((event, index) => (
-              <li key={index} className="mb-2">
+          {events[0] ? (
+            <ul>
+              <li key={events[0].eventId} className="mb-2">
                 <p>
-                  <strong>{event.name}</strong> - {event.date} at {event.time} (
-                  {event.location})
+                  <strong>{events[0].name}</strong> -{" "}
+                  {new Date(events[0].date).toLocaleDateString()}
                 </p>
               </li>
-            ))}
-          </ul>
+              <li key={events[1].eventId} className="mb-2">
+                <p>
+                  <strong>{events[1].name}</strong> -{" "}
+                  {new Date(events[1].date).toLocaleDateString()}
+                </p>
+              </li>
+            </ul>
+          ) : (
+            <p>No events</p>
+          )}
         </Card>
         <Card></Card>
         <Card>
