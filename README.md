@@ -39,9 +39,8 @@ This app is hosted at [events.joshygarcia.com](http://events.joshygarcia.com).
 ### Getting Started
 
 1. Navigate to [events.joshygarcia.com](http://events.joshygarcia.com).
-2. Click on the 'Register' button and provide the necessary information.
-3. Confirm your email address (you should receive a confirmation email shortly after registering).
-4. Once you've confirmed your email address, you can log in using the 'Log In' button on the homepage.
+3. Click on the 'Register' button and provide the necessary information.
+4. You will be redirected to the dashboard once you successfully register.
 
 ### Features
 
@@ -51,7 +50,7 @@ Once logged in, you can:
 
 - **View All Your Events** Click the 'Events' tab on the sidebar to see all the events that you have permission to see.
 
--- **See an Events Details** Click on any event on the events page to see the details of the event.
+  - **See an Events Details** Click on any event on the events page to see the details of the event.
 
 - **Create an Event:** Use the 'Create Event' button to schedule a new event. You can add a name, date, time, venue, and more.
 
