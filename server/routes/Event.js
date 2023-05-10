@@ -9,17 +9,8 @@ const { validateToken } = require("../middlewares/AuthMiddleware")
 router.post("/create", validateToken, async (req, res) => {
   console.log("create event")
   try {
-    const {
-      name,
-      date,
-      time,
-      description,
-      venueId,
-      caterId,
-      productionId,
-      companyId,
-      managerId,
-    } = req.body
+    const { name, date, time, description, venueId, companyId, managerId } =
+      req.body
 
     console.log(req.body)
 
@@ -40,8 +31,6 @@ router.post("/create", validateToken, async (req, res) => {
         time,
         description,
         venueId,
-        caterId,
-        productionId,
         companyId,
         managerId,
       })
