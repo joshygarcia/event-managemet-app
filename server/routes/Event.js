@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const { User, Manager, Events } = require("../models")
+const { User, Manager, Events, Venue } = require("../models")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const { validateToken } = require("../middlewares/AuthMiddleware")
@@ -21,9 +21,11 @@ router.post("/create", validateToken, async (req, res) => {
       managerId,
     } = req.body
 
+    console.log(req.body)
+
     let valid = true
-    let manager = await Manager.findOne({ where: { managerId } })
-    let company = await Company.findOne({ where: { companyId } })
+    let manager = await Manager.findOne({ where: { userId: managerId } })
+    let company = await Company.findOne({ where: { userId: companyId } })
     let venue = await Venue.findOne({ where: { venueId } })
 
     if (!manager || !company || !venue) {
