@@ -3,7 +3,7 @@
 This event management app is designed to help users create and manage events, select venues, and coordinate catering and production services. The app includes features for user management, event creation, venue selection, and service provider selection.
 Features
 
-User Management: The app includes a User entity that can be either an Employee or a Client. Clients can create and manage events, while Employees can perform administrative tasks such as approving events and managing service providers.
+User Management: The app includes a User entity that can be either an Employee or a Client. Clients can create and manage events, while Employees can perform aditional administrative tasks such as approving events and managing service providers.
 
 Event Creation: The app allows clients to create and manage events, including selecting the date, time, location, and other details. Clients can also specify catering and production needs for each event.
 
