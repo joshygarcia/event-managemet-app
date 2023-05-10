@@ -1,6 +1,6 @@
 import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
-const isProduction = false //process.env.NODE_ENV == "production"
+const isProduction = true //process.env.NODE_ENV == "production"
 
 // https://vitejs.dev/config/
 export default defineConfig({
