@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const { User, Manager, Events, Venue } = require("../models")
+const { User, Manager, Events, Venue, Company } = require("../models")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const { validateToken } = require("../middlewares/AuthMiddleware")
