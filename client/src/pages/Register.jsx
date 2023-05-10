@@ -140,7 +140,7 @@ function Register() {
       >
         <a href="/" className="pointer cursor-auto">
           <img
-            src="../public/level-up-icon-white.png"
+            src="./level-up-icon-white.png"
             alt="Level Up Logo"
             className="h-32 w-32"
           />
