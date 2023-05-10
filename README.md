@@ -34,12 +34,43 @@ The app is built using the following technologies and frameworks:
 
 ## Usage
 
-To use the app, follow these steps:
+This app is hosted at [events.joshygarcia.com](http://events.joshygarcia.com).
 
-- [insert usage step here]
-- [insert usage step here]
-- [insert usage step here]
+### Getting Started
+
+1. Navigate to [events.joshygarcia.com](http://events.joshygarcia.com).
+2. Click on the 'Register' button and provide the necessary information.
+3. Confirm your email address (you should receive a confirmation email shortly after registering).
+4. Once you've confirmed your email address, you can log in using the 'Log In' button on the homepage.
+
+### Features
+
+Once logged in, you can:
+
+- **View Upcoming Events and Tasks:** On the dashboard, you'll find a list of all upcoming events and tasks.
+
+- **View All Your Events** Click the 'Events' tab on the sidebar to see all the events that you have permission to see.
+
+-- **See an Events Details** Click on any event on the events page to see the details of the event.
+
+- **Create an Event:** Use the 'Create Event' button to schedule a new event. You can add a name, date, time, venue, and more.
+
+- **Modify Your User Info:** Click on 'Profile' tab on the sidebar to view and edit your user information. Here, you can update your email address, change your password, and address.
+
+### Troubleshooting and Support
+
+If you encounter any issues while using the app or have any questions, feel free to contact us at [events@joshygarcia.com](mailto:events@joshygarcia.com).
 
 ## Contributors
 
-This app was developed by [insert contributor names here]. If you have any feedback or suggestions, please contact us at [insert contact email here].
+This app was developed by the following contributors:
+
+- Joshy Garcia
+- Gadiel Rodriguez
+- Gabriela Gonzales
+- Allan Alvarez
+- Salaamah Ahmad
+- David Andrade
+- Malik Alaka Yusuf
+
+If you have any feedback or suggestions, please feel free to contact us at [events@joshygarcia.com](mailto:events@joshygarcia.com). Your input is greatly appreciated and will help us improve our application. Thank you for your support!
