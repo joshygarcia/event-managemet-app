@@ -1,0 +1,36 @@
+🌟 There will be a table where users will be able to create events.
+
+🔴The team communicates through GitHub, Slack, and Microsoft Teams.
+
+🔴The documentation is stored on GitHub.
+
+🔴MySQL is used for the database.
+
+🔴Level-Up! for user interface and Journey for the drawing program.
+
+🌟There are regional event managers and there are local event managers, as well as those who are actually there during the event.
+🌟Local event manager checks one or few events personally while regional event managers focus on multiple events.
+
+🌟Managers that view the software should have it be detailed while event managers have a simple description with intensive training.
+
+🌟Stakeholder: Challenges are different levels of degree such as equipment malfunction, caterer not showing up. These challenges are solved by the local event manager
+who has access to all contact information from everyone involved in the event.
+
+🌟Vendor Services
+🌟Security privileges such as the Director of Marketing being able to view the number and size of events in previous years.
+
+🔴Expecations: Documentation, testing scenarios with user scenarios, Requirements and sequences are expected.
+
+🌟Sequences are the state of the event such as "locating a caterer" or in progress details and these are viewable to certain users and the client.
+
+🌟The database will include users, user roles, customers, etc.
+
+🔴What is the domain? How many users are there and what types of users are there?
+
+🔴If scrum then who is the scrum master?
+
+🔴Describe testing such as unit testing, component testing, and system testing for the system being made.
+
+🔴Go through each chapter and identify a main idea that the Professor wants to see on the presentation
+
+🔴User stories and user testing. Write the tests for the code (does not have to be actual code).
