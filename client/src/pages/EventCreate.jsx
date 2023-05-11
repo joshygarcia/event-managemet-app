@@ -69,17 +69,14 @@ const EventCreate = () => {
     e.preventDefault()
 
     try {
-      const response = await fetch(
-        "https://levelup-server.onrender.com/api/event/create",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            accessToken: localStorage.getItem("accessToken"),
-          },
-          body: JSON.stringify(formData),
-        }
-      )
+      const response = await fetch("/api/event/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          accessToken: localStorage.getItem("accessToken"),
+        },
+        body: JSON.stringify(formData),
+      })
 
       if (response.ok) {
         navigate("/dashboard/events")

@@ -14,6 +14,8 @@ import Profile from "./pages/Profile"
 import { EventsProvider } from "./components/EventsContext"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
+console.log(import.meta.env.VITE_APP_ENV)
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <EventsProvider>
