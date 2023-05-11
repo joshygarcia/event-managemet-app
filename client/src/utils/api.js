@@ -1,5 +1,5 @@
 export const fetchApi = async (url, setter) => {
-  const response = await fetch(target + url, {
+  const response = await fetch(url, {
     headers: {
       accessToken: localStorage.getItem("accessToken"),
     },
