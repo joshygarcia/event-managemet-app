@@ -39,8 +39,8 @@ This app is hosted at [events.joshygarcia.com](http://events.joshygarcia.com).
 ### Getting Started
 
 1. Navigate to [events.joshygarcia.com](http://events.joshygarcia.com).
-3. Click on the 'Register' button and provide the necessary information.
-4. You will be redirected to the dashboard once you successfully register.
+2. Click on the 'Register' button and provide the necessary information.
+3. You will be redirected to the dashboard once you successfully register.
 
 ### Features
 
