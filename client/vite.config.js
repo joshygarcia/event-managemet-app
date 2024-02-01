@@ -7,9 +7,11 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://levelup-server.onrender.com",
+        target: "https://levelup-server.onrender.com/api",
         changeOrigin: true,
         secure: false,
+        ws: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
   },
